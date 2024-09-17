@@ -1,0 +1,91 @@
+﻿@model IEnumerable<CreditFullSA.Models.Credito>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Creditos</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.cedula)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.nombreCompleto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.lineaCredito)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.montoSolicitar)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.plazo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.fecha)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.montoInteres)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.estado)
+            </th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.cedula)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.nombreCompleto)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.lineaCredito)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.montoSolicitar)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.plazo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.fecha)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.montoInteres)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.estado)
+                </td>
+                <td>
+                    <form asp-controller="Credito" asp-action="Aprobar" method="post" style="display:inline;">
+                        <input type="hidden" name="Email" value="@item.email" />
+                        <input type="hidden" name="id" value="@item.numeroSolicitud" />
+                        <button type="submit" class="btn btn-secondary">Aprobar</button>
+                    </form>
+
+                    <form asp-controller="Credito" asp-action="Rechazar" method="post" style="display:inline;">
+                        <input type="hidden" name="Email" value="@item.email" />
+                        <input type="hidden" name="id" value="@item.numeroSolicitud" />
+                        <button type="submit" class="btn btn-info">Rechazar</button>
+                    </form>
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

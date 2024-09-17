@@ -1,0 +1,78 @@
+﻿@model CreditFullSA.Models.Credito
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Create</h1>
+
+<h4>Credito</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="cedula" class="control-label"></label>
+                <input asp-for="cedula" class="form-control" />
+                <span asp-validation-for="cedula" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="nombreCompleto" class="control-label"></label>
+                <input asp-for="nombreCompleto" class="form-control" />
+                <span asp-validation-for="nombreCompleto" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="email" class="control-label"></label>
+                <input asp-for="email" class="form-control" />
+                <span asp-validation-for="email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="direccion" class="control-label"></label>
+                <input asp-for="direccion" class="form-control" />
+                <span asp-validation-for="direccion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="lineaCredito" class="control-label"></label>
+                <select asp-for="lineaCredito" class="list-group-item">
+                    <option selected asp-for="plazo" values="Personal">Personal</option>
+                    <option asp-for="lineaCredito" values="Hogar">Hogar</option>
+                    <option asp-for="lineaCredito" values="Salud">Salud</option>
+                    <option asp-for="lineaCredito" values="Vehiculos">Vehiculos</option>
+                </select>
+                <span asp-validation-for="lineaCredito" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="montoSolicitar" class="control-label"></label>
+                <input asp-for="montoSolicitar" class="form-control" />
+                <span asp-validation-for="montoSolicitar" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="plazo" class="control-label"></label>
+                <select asp-for="plazo" class="list-group-item">
+                    <option selected asp-for="plazo" values="6">6 meses</option>
+                    <option asp-for="plazo" values="12">12 meses</option>
+                    <option asp-for="plazo" values="18">18 meses</option>
+                    <option asp-for="plazo" values="24">24 meses</option>
+                </select>
+                <span asp-validation-for="plazo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="fecha" class="control-label"></label>
+                <input asp-for="fecha" value="sysDate" class="form-control" />
+                <span asp-validation-for="fecha" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
